@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px
+}
+
+.stage {
+  border: 1px solid black;
+  padding: 5px;
+  height: 200px;
+  width: 100px
+}
