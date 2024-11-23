@@ -1,12 +1,132 @@
 .container {
   display: flex;
-  gap: 5px;
-  margin-top: 10px
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f5f8ff;
+  border-radius: 8px;
+  max-width: 1200px;
+  width: 95%;
+  min-height: calc(100vh - 120px); /* Subtract space for margins/header/input */
+  align-items: stretch;
 }
 
 .stage {
-  border: 1px solid black;
-  padding: 5px;
-  height: 200px;
-  width: 100px
+  border: 2px solid #2c5282;
+  border-radius: 6px;
+  padding: 12px;
+  flex: 1;
+  min-width: 150px;
+  max-width: 250px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  height: 100%;      /* Fill available container height */
+  overflow-y: auto;  /* Add scrolling if content overflows */
+  transition: all 0.3s ease-in-out;
+  transform-origin: center;
+}
+
+.stage:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-color: #4299e1;
+}
+
+input {
+  width: 95%;
+  max-width: 400px;
+  padding: 8px 12px;
+  border: 2px solid #4299e1;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  margin: 0 auto;
+  display: block;
+}
+
+input:focus {
+  border-color: #2b6cb0;
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+  transform: translateY(-1px);
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  padding: 8px 12px;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.9rem;
+  word-break: break-word;
+  position: relative;
+  transform-origin: center;
+}
+
+button:hover {
+  background-color: #2b6cb0;
+  transform: scale(1.02);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+span {
+  color: #2c5282;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+    gap: 10px;
+    min-height: calc(100vh - 100px);
+  }
+
+  .stage {
+    min-width: 120px;
+    padding: 8px;
+    min-height: 300px;  /* Slightly smaller on mobile */
+  }
+
+  input {
+    width: 90%;
+    font-size: 16px; /* Better for mobile touch */
+  }
+
+  button {
+    padding: 10px; /* Larger touch target for mobile */
+  }
+}
+
+/* Optional: Add transition for new items being added */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+button {
+  animation: fadeIn 0.3s ease-out;
 }
