@@ -2,6 +2,7 @@
 <div class="container">
   <div class="stage" data-testid="assembly-stage" *ngFor="let stage of stages; let i = index">
     <span style="display: block;">{{stage}}</span>
-    <button *ngFor="let item of items[i]" (contextmenu)="moveItemBackward(i, item)" (click)="moveItemForward(i, item)" data-testid="assembly-item">{{item}}</button>
+    <button *ngFor="let item of items[i]" (contextmenu)="moveItemBackward(i, item); $event.preventDefault()" (click)="moveItemForward(i, item)" data-testid="assembly-item">{{item}}</button>
   </div>
 </div>
+

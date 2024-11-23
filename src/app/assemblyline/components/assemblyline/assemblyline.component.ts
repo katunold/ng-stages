@@ -20,21 +20,29 @@ export class AssemblylineComponent {
     }
   }
 
+  // Move item forward to the next stage
   moveItemForward(stageIndex: number, item: string) {
+    // Remove item from current stage
+    this.items[stageIndex] = this.items[stageIndex].filter(i => i !== item);
+
+    // If not at last stage, add item to next stage
     if (stageIndex < this.stages.length - 1) {
-      this.items[stageIndex] = this.items[stageIndex].filter(i => i !== item);
-      this.items[stageIndex + 1] = [item, ...(this.items[stageIndex + 1] || [])];
-    } else {
-      this.items[stageIndex] = this.items[stageIndex].filter(i => i !== item);
+      const nextStage = stageIndex + 1;
+      const nextStageItems = this.items[nextStage] || [];
+      this.items[nextStage] = [item, ...nextStageItems];
     }
   }
 
+  // Move item backward to the previous stage
   moveItemBackward(stageIndex: number, item: string) {
+    // Remove item from current stage
+    this.items[stageIndex] = this.items[stageIndex].filter(i => i !== item);
+
+    // If not at first stage, add item to previous stage
     if (stageIndex > 0) {
-      this.items[stageIndex] = this.items[stageIndex].filter(i => i !== item);
-      this.items[stageIndex - 1] = [...(this.items[stageIndex - 1] || []), item];
-    } else {
-      this.items[stageIndex] = this.items[stageIndex].filter(i => i !== item);
+      const previousStage = stageIndex - 1;
+      const previousStageItems = this.items[previousStage] || [];
+      this.items[previousStage] = [...previousStageItems, item];
     }
   }
 
